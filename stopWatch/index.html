@@ -1,0 +1,168 @@
+<html>
+
+<body>
+    <div id="total">
+        <div>
+
+            <div id="stopWatch">0 </div>
+            <div id="milli">00</div>
+        </div>
+
+        <div id="data">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <style type="text/css">
+         body {
+             margin: auto;
+             width: 600px;
+             background-color:white
+
+         }
+         #total{
+             border: 1px solid  black;
+             border-radius: 10px;
+             padding: 70px;
+             height: 300px;
+             width: 600px;
+         }
+         #stopWatch {
+             text-align: center;
+             margin-bottom: 30px;
+             font-size: 80px;
+             float: left;
+             margin-left: 320px;
+             color:black;
+         }
+         #milli {
+             font-size: 40px;
+             float: left;
+             text-align: bottom;
+             margin-left: 15px;
+             margin-top: 30px;
+             color: black;
+         }
+         #data {
+             margin-top: 30px;
+             margin-left: 150px;
+             clear: both;
+         }
+         button {
+             padding: 15px 30px;
+             margin-left: 20px;
+             font-size: 25px;
+             border-radius: 10%;
+
+         }
+         #start {
+             background-color: aqua;
+         }
+         #stop {
+             background-color:rgb(216, 230, 230);
+         }
+         #reset {
+             background-color: orange;
+         }
+    </style>
+    <script>
+        var stopwatch = document.getElementById("stopWatch")
+        var x
+        var hrs = 0
+        var min = 0
+        var sec = 0
+        var milSec = 0
+        var startFlag = true
+        var stopFlag = true
+        var count = 0
+
+        var milli = document.getElementById('milli')
+        var start = document.getElementById("start")
+        start.addEventListener("click", startBtn)
+        function startBtn() {
+
+            if (startFlag && count == 0) {
+                x = setInterval(function () {
+                    milSec++
+                    count++
+                    console.log(milSec)
+                    stopFlag = true
+
+                    if (milSec == 100) {
+                        sec++
+                        milSec = 0
+                    }
+                    if (sec == 60) {
+                        console.log(sec)
+                        min = min + 1
+                        sec = 0
+                        console.log(min)
+                        // stopwatch.textContent = min
+                    }
+
+                    if (min == 59) {
+                        console.log(min)
+                        hrs = hrs + 1
+                        sec = 0
+                        min = 0
+                    }
+                    milli.textContent = milSec
+                    console.log(milli)
+                    if (sec >= 0) {
+
+                        stopwatch.textContent = sec
+                        milli.textContent = milSec
+                    }
+                    if (min > 0) {
+                        stopwatch.textContent = min + ":" + sec
+                        milli.textContent = milSec
+                    }
+
+                    if (hrs > 0) {
+                        stopwatch.textContent = hrs + ":" + min + ":" + sec
+                        milli.textContent = milSec
+                    }
+
+
+                }, 10)
+                startFlag = false
+            }
+            return x
+        }
+
+        var stop = document.getElementById("stop")
+        stop.addEventListener("click", stopBtn)
+
+        function stopBtn() {
+            if (stopFlag) {
+                clearInterval(x)
+                stopFlag = false
+                startFlag = true
+                count = 0
+            }
+
+        }
+
+        var reset = document.getElementById("reset")
+        reset.addEventListener("click", resetBtn)
+
+        function resetBtn() {
+            clearInterval(x)
+            stopwatch.textContent = 0
+            milli.textContent = "00"
+
+            startFlag = true
+            //stopFlag=true
+            count = 0
+
+            hrs = 0
+            min = 0
+            sec = 0
+            milSec = 0
+        }
+
+    </script>
+</body>
+
+</html>
