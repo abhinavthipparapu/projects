@@ -1,0 +1,49 @@
+
+body  {
+   
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRAyac6aPzULxv7C-ASGkwPCY3xK_Zn7h1WiA_N9yUKlUbzn624"); */
+    background-color: #80CBC4;
+}
+form {
+    margin: 2% 0 0 5%;
+    width: 500px;
+}
+select {
+    padding: 10px 20px;
+    font-size: 20px;
+    margin:20px 0 0 10px;
+    
+}
+label {
+    width: 150px;
+    display: inline-block;
+    font-size: 20px;
+}
+input {
+    padding: 10px 20px;
+    font-size: 20px;    
+    margin-top: 20px;
+}
+#submit {
+    margin-left: 100px;
+    padding: 10px 100px;
+    color: white;
+    background-color: black;
+}
+div {
+    float: left;
+}
+#res {
+    margin-left: 100px;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td,tr,th {
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid black;
+    
+}
