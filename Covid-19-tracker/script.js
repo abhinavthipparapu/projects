@@ -15,9 +15,9 @@ function getData() {
 
                 displayData(data[i])
             }
-            var row1 = document.createElement('tr')
-    row1.innerHTML = '<th>' + 'Total' + '<th>' + 'Global'+ '<td>' + total['NewConfirmed'] + '<td>' + total['TotalConfirmed'] + '<td>' + total['NewDeaths'] + '<td>' + total['TotalDeaths'] + '<td>' + total['NewRecovered'] + '<td>' + total['TotalRecovered']
-    display.appendChild(row1)
+            var rowData = document.createElement('tr')
+    rowData.innerHTML = '<th>' + 'Total' + '<th>' + 'Global'+ '<td>' + total['NewConfirmed'] + '<td>' + total['TotalConfirmed'] + '<td>' + total['NewDeaths'] + '<td>' + total['TotalDeaths'] + '<td>' + total['NewRecovered'] + '<td>' + total['TotalRecovered']
+    display.appendChild(rowData)
         }
     }
     
@@ -52,9 +52,9 @@ function sortData() {
                 return (Number(b.NewConfirmed) - Number(a.NewConfirmed))
             }
         })         
-         var row1 = document.createElement('tr')
-        row1.innerHTML = '<th>' + 'Total' + '<th>' + 'Global'+ '<td>' + total['NewConfirmed'] + '<td>' + total['TotalConfirmed'] + '<td>' + total['NewDeaths'] + '<td>' + total['TotalDeaths'] + '<td>' + total['NewRecovered'] + '<td>' + total['TotalRecovered']
-        display.appendChild(row1)
+         var rowData = document.createElement('tr')
+        rowData.innerHTML = '<th>' + 'Total' + '<th>' + 'Global'+ '<td>' + total['NewConfirmed'] + '<td>' + total['TotalConfirmed'] + '<td>' + total['NewDeaths'] + '<td>' + total['TotalDeaths'] + '<td>' + total['NewRecovered'] + '<td>' + total['TotalRecovered']
+        display.appendChild(rowData)
     } else if (event.target.value == "Total Confirmed") {
         sortedArray = data.sort(function (a, b) {
             if (filter.value == 'Ascending') {
