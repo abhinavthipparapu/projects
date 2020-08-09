@@ -1,11 +1,9 @@
 
-body  {
-   
-    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRAyac6aPzULxv7C-ASGkwPCY3xK_Zn7h1WiA_N9yUKlUbzn624"); */
-    background-color: #80CBC4;
-}
 form {
-    margin: 2% 0 0 5%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
     width: 500px;
 }
 select {
@@ -23,12 +21,14 @@ input {
     padding: 10px 20px;
     font-size: 20px;    
     margin-top: 20px;
+    border-radius: 5px;
 }
 #submit {
     margin-left: 100px;
     padding: 10px 100px;
     color: white;
     background-color: black;
+    border-radius: 5px;
 }
 div {
     float: left;
@@ -39,11 +39,13 @@ div {
 table {
     border: 1px solid black;
     border-collapse: collapse;
+    border-radius: 5px;
 }
 td,tr,th {
     padding: 20px;
     font-size: 20px;
     text-align: center;
     border: 1px solid black;
+    border-radius: 5px;
     
 }
