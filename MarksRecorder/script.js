@@ -1,24 +1,15 @@
 var form = document.querySelector('form')
 form.addEventListener('submit', function () {
     event.preventDefault()
-    formData()
-})
-
-var input = document.querySelectorAll('input')
-var select = document.querySelectorAll('select')
-var arr = []
-var obj = {}
-function formData() {
-     obj = {
+    console.log(input)
+    obj = {
         student: input[0].value,
-        sanskrit: Number(input[1].value),
-        hindi: Number(input[2].value),
-        english: Number(input[3].value),
-        maths: Number(input[4].value),
-        biology: Number(input[5].value),
-        physics: Number(input[6].value),
-        chemistry: Number(input[7].value),
-        social: Number(input[8].value),
+        english: Number(input[1].value),
+        maths: Number(input[2].value),
+        biology: Number(input[3].value),
+        physics: Number(input[4].value),
+        chemistry: Number(input[5].value),
+        social: Number(input[6].value),
         class: select[0].value,
         section: select[1].value,
         exam: select[2].value,
@@ -26,10 +17,17 @@ function formData() {
         total: ''
         
     }
-    addData()
-}
+    console.log(obj)
+    addDataToDisplay()
+})
 
-function addData() {
+var input = document.querySelectorAll('input')
+var select = document.querySelectorAll('select')
+var arr = []
+var obj = {}
+
+
+function addDataToDisplay() {
     arr.push(obj)
     console.log(arr)
     display(arr)
@@ -45,32 +43,36 @@ function display(data) {
         row1.innerHTML = '<th>' + 'Student' + '<th>' + 'Class' + '<th>' + 'Section' + '<th>' + 'Exam' + '<th>' + 'Grade' + '<th>' + 'Total'
         table.append(row1)
         for(var i=0;i<data.length;i++) {
-            var total  = data[i].sanskrit + data[i].hindi + data[i].english + data[i].maths + data[i].biology + data[i].physics + data[i].chemistry + data[i].social
-            if(total>800){
-                data['grade'] = 'Marks Secured is greator than total marks (wrong marks entered)'
+            var total = 0
+            total  =  data[i].english + data[i].maths + data[i].biology + data[i].physics + data[i].chemistry + data[i].social
+            if(total>600){
+                alert('please enter correct marks total cannot be greator than 600')
             }
-            else if(total < 800 && total >= 600) {
-                data['grade'] = 'A'
-            }else if(total < 600 && total >= 500) {
-                data['grade'] = 'B'
-            }else if(total < 500 && total >= 400) {
-                data['grade'] = 'C'
-            }else if(total < 400 && total >= 300) {
-                data['grade'] = 'D'
-            }else {
-                data['grade'] = 'E'
+            else{
+
+                if(total < 600 && total >= 500) {
+                    data['grade'] = 'A'
+                }else if(total < 500 && total >= 420) {
+                    data['grade'] = 'B'
+                }else if(total < 420 && total >= 360) {
+                    data['grade'] = 'C'
+                }else if(total < 360 && total >= 280) {
+                    data['grade'] = 'D'
+                }else {
+                    data['grade'] = 'E'
+                }
+                data['total'] = total
+                var row2 = document.createElement('tr')
+                row2.innerHTML = '<td>' + data[i].student + '<td>' + data[i].class + '<td>' + data[i].section + '<td>' + data[i].exam + '<td>' + data['grade'] + '<td>' + data['total']
+                table.append(row2)
             }
-            data['total'] = total
-            var row2 = document.createElement('tr')
-        row2.innerHTML = '<td>' + data[i].student + '<td>' + data[i].class + '<td>' + data[i].section + '<td>' + data[i].exam + '<td>' + data['grade'] + '<td>' + data['total']
-        table.append(row2)
     }
     res.append(table)
 }
 var sel1 = select[3]
 sel1.addEventListener('change', filter)
 function filter() {
-    var filter_arr = arr.filter(function(item) {
+    var filterArray = arr.filter(function(item) {
         if(event.target.value == 'Class') {
             if(Number(select[0].value) == 6) {
                 return Number(item.class) == 6
@@ -107,13 +109,13 @@ function filter() {
 
     })
 
-    display(filter_arr)
+    display(filterArray)
 }
 
 var sel2 = select[4]
 sel2.addEventListener('change', sort)
 function sort() {
-    var sort_arr = arr.sort(function(a,b) {
+    var sortArray = arr.sort(function(a,b) {
         if(event.target.value == 'Grade') { 
             if(a.grade > b.grade) {
                 return 1
@@ -122,5 +124,5 @@ function sort() {
             }
         }
     })
-    display(sort_arr)
+    display(sortArray)
 }
